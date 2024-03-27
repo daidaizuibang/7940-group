@@ -1,0 +1,20 @@
+version: '3'
+services:
+  chatbot:
+    image: comp7940-lab06-main-chatbot
+    environment:
+      - ACCESS_TOKEN_TG=6711842951:AAGQcVkK2ru_hhXt_ualnEfyt2LSwVOhTjA
+      - ACCESS_TOKEN_CHATGPT=1bfd7ba8-d8b2-4009-9b8b-3ec083e1ae23
+      - PASSWORD_REDIS=y1IW6mEGYxTerMxGjpBccYdWcMWnxuDR
+      - CHATGPT_BASICURL=https://chatgpt.hkbu.edu.hk/general/rest
+      - CHATGPT_MODELNAME=gpt-4-turbo
+      - CHATGPT_APIVERSION=2024-02-15-preview
+      - PORT_REDIS=19407
+      - HOST_REDIS=redis-19407.c1.ap-southeast-1-1.ec2.cloud.redislabs.com
+    depends_on:
+      - redis
+  redis:
+    image: redis
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    command: ["/usr/local/etc/redis/redis.conf"]
