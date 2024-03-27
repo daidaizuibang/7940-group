@@ -2,3 +2,4 @@ asyncio
 fastapi-poe
 python-telegram-bot
 pymongo
+logging
